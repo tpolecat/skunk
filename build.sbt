@@ -110,7 +110,7 @@ lazy val core = project
       "org.tpolecat"           %% "natchez-core"            % natchezVersion,
       "org.tpolecat"           %% "sourcepos"               % "1.0.0",
       "com.ongres.scram"        % "client"                  % "2.1",
-      "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.4",
+      "org.scala-lang.modules" %% "scala-collection-compat" % "2.5.0",
     ) ++ Seq(
       "com.beachape"  %% "enumeratum"   % "1.6.1",
     ).filterNot(_ => scalaVersion.value.startsWith("3."))
