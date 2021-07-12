@@ -187,6 +187,10 @@ trait Session[F[_]] {
    */
   def describeCache: Describe.Cache[F]
 
+  /**
+   * Stream for all notifications on all subscribed channels.
+   */
+  def notifications(maxQueued: Int): Stream[F, Notification[String]]
 }
 
 
@@ -413,6 +417,9 @@ object Session {
         override def describeCache: Describe.Cache[F] =
           proto.describeCache
 
+        override def notifications(maxQueued: Int): Stream[F, Notification[String]] =
+          proto.notifications(maxQueued)
+
       }
     }
   }
@@ -470,6 +477,8 @@ object Session {
 
         override def describeCache: Describe.Cache[G] = outer.describeCache.mapK(fk)
 
+        override def notifications(maxQueued: Int): Stream[G, Notification[String]] =
+          outer.notifications(maxQueued).translate(fk)
       }
   }
 
