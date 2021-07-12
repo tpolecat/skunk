@@ -112,7 +112,7 @@ lazy val core = project
       "com.ongres.scram"        % "client"                  % "2.1",
       "org.scala-lang.modules" %% "scala-collection-compat" % "2.4.4",
     ) ++ Seq(
-      "com.beachape"  %% "enumeratum"   % "1.6.1",
+      "com.beachape"  %% "enumeratum"   % "1.7.0",
     ).filterNot(_ => scalaVersion.value.startsWith("3."))
   )
 
